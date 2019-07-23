@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 
 class User extends Model {
   static init(sequelize) {
-    super.increment(
+    super.init(
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
@@ -19,6 +19,7 @@ class User extends Model {
         user.password_hash = await bcrypt.hash(user.password, 8);
       }
     });
+
     return this;
   }
 
